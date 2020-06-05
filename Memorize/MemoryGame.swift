@@ -9,14 +9,14 @@
 import Foundation
 
 struct MemoryGame<CardContent> where CardContent: Equatable {
-    var cards: [Card]
+    private(set) var cards: [Card]
     
-    var endOfGame: Bool {
+    var endOfGame: Bool { // private(set) doesn't apply to read only computed vars
         cards.indices.filter { !cards[$0].isMatched }.count <= 2
             && indexOfSingleFaceUpCard != nil
     }
     
-    var indexOfSingleFaceUpCard: Int? {
+    private var indexOfSingleFaceUpCard: Int? {
         get { cards.indices.filter { cards[$0].isFaceUp }.only }
         set {
             for index in cards.indices {
