@@ -27,10 +27,14 @@ class EmojiMemoryGame: ObservableObject {
     // MARK: - Intent(s)
     
     func choose(card: MemoryGame<String>.Card) {
-        if model.endOfGame {
-            model = EmojiMemoryGame.createMemoryGame()
-        } else {
+//        if model.endOfGame {
+//            model = EmojiMemoryGame.createMemoryGame()
+//        } else {
             model.choose(card: card)
-        }
+//        }
+    }
+    
+    func resetGame() {
+        model = EmojiMemoryGame.createMemoryGame()
     }
 }
